@@ -5,12 +5,15 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const carritoLogo = document.querySelector('.navbar-shopping-cart');
 const carritoMenu = document.querySelector('.product-detail');
 const cardsContainer = document.querySelector('.cards-container')
+const productsCard = document.querySelector('.product-card')
+const productDetail = document.querySelector('.product-detail-aside')
 
 
 
 menuEmail.addEventListener('click', toggledesktopMenu);
 burgerMenu.addEventListener('click', toggleburgerMenu);
 carritoLogo.addEventListener('click', togglecarritoMenu);
+/*productsCard.addEventListener('mouseover', toggleproductsCard);*/
 
 
 function toggledesktopMenu() {
@@ -56,6 +59,25 @@ if(!isDesktopMenuClosed){
 }
     carritoMenu.classList.toggle('inactive')
 }
+
+/*function toggleproductsCard() {
+    let isMobileMenuClosed = mobileMenu.classList.contains('inactive');
+
+    let isDesktopMenuClosed = menuEmail.classList.contains('inactive')
+
+    console.log('click');
+    
+if(!isMobileMenuClosed){
+
+    mobileMenu.classList.add ('inactive');
+
+}
+if(!isDesktopMenuClosed){
+
+    desktopMenu.classList.add('inactive')
+}
+    carritoMenu.classList.toggle('inactive')
+}*/
 
 const productList = [];
 productList.push({
@@ -113,6 +135,8 @@ productList.push({
 </div>
 */
 
+/*FUNCION MENU PRINCIPAL*/
+
 function renderProducts(arr){
     for(product of productList){
         const productCard = document.createElement('div');
@@ -153,8 +177,87 @@ function renderProducts(arr){
 
 renderProducts(productList);
 
+/*FUNCION DETALLES DE PRODUCTO */
+/*function detailsProduct(arr){
+    for(product of productList){
 
+        const productCardDetail = document.createElement('div');
+        productCardDetail.classList.add('product-card-aside');
+    
+        const productImgDetail = document.createElement('img')
+        productImgDetail.setAttribute('src', product.image);
+    
+    
+        const productInfoDetail = document.createElement('div');
+        productInfoDetail.classList.add('product-info-aside');
+    
+        const productInfoDivDetail = document.createElement('div');
+    
+        const productPriceDetail = document.createElement('p');
+        productPrice.innerText = '$' + product.price;
+        const productNameDetail = document.createElement('p');
+        productName.innerText = product.name;
+    
+        productInfoDivDetail.appendChild(productPrice);
+        productInfoDivDetail.appendChild(productName)
+    
+        const productInfoFigureDetail = document.createElement('figure');
+        const productImgCartDetail = document.createElement('img');
+        productImgCartDetail.setAttribute('src','./icons/bt_add_to_cart.svg')
+    
+        productInfoFigureDetail.appendChild(productImgCart);
+        
+        productInfoDetail.appendChild(productInfoDiv);
+        productInfoDetail.appendChild(productInfoFigure);
+    
+        productCardDetail.appendChild(productImg);
+        productCardDetail.appendChild(productInfo);
+    
+        cardsContainerDetail.appendChild(productCardDetail);
+    }
 
+    }
+}
+*/
+
+/*<aside class="product-detail-aside inactive">
+    <div class="product-detail-close">
+      <img src="./icons/icon_close.png" alt="close">
+    </div>
+    <img class="img-info-producto" src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+    <div class="product-info-aside">
+      <p>$35,00</p>
+      <p>Bike</p>
+      <p>With its practical position, this bike also fulfills a decorative function, add your hall or workspace.</p>
+      <button class="primary-button add-to-cart-button">
+        <img src="./icons/bt_add_to_cart.svg" alt="add to cart">
+        Add to cart
+      </button>
+    </div>
+  </aside>*/
+
+/*function toggleproductsCard() {
+    console.log('click');
+
+    let isMobileMenuClosed = mobileMenu.classList.contains('inactive');
+
+    let isDesktopMenuClosed = menuEmail.classList.contains('inactive');
+
+    
+    
+if(!isMobileMenuClosed){
+
+    mobileMenu.classList.add ('inactive');
+
+}
+if(!isDesktopMenuClosed){
+
+    desktopMenu.classList.add('inactive')
+}
+
+    productDetail.classList.toggle('inactive');
+}
+*/
 
 
 
