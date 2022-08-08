@@ -5,25 +5,31 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const carritoLogo = document.querySelector('.navbar-shopping-cart');
 const carritoMenu = document.querySelector('.product-detail');
 const cardsContainer = document.querySelector('.cards-container')
-const productsCard = document.querySelector('.product-card')
-const productDetail = document.querySelector('.product-detail-aside')
+let productsCard = document.querySelector('.product-card')
+let productDetail = document.querySelector('.product-detail-aside')
+        
 
 
 
 menuEmail.addEventListener('click', toggledesktopMenu);
 burgerMenu.addEventListener('click', toggleburgerMenu);
 carritoLogo.addEventListener('click', togglecarritoMenu);
-/*productsCard.addEventListener('mouseover', toggleproductsCard);*/
+
 
 
 function toggledesktopMenu() {
 
     let isCarritoMenuClosed = carritoMenu.classList.contains('inactive');
+    let isProductDetailClosed = productDetail.classList.contains('inactive');
 
     console.log('click');
     if(!isCarritoMenuClosed){
 
         carritoMenu.classList.add ('inactive');
+    }
+    if(!isProductDetailClosed){
+
+        productDetail.classList.add('inactive')
     }
     desktopMenu.classList.toggle('inactive');
 }
@@ -32,11 +38,16 @@ function toggledesktopMenu() {
 function toggleburgerMenu() {
 
     let isCarritoMenuClosed = carritoMenu.classList.contains('inactive');
+    let isProductDetailClosed = productDetail.classList.contains('inactive');
 
     console.log('click');
     if(!isCarritoMenuClosed){
 
         carritoMenu.classList.add ('inactive');
+    }
+    if(!isProductDetailClosed){
+
+        productDetail.classList.add('inactive')
     }
     mobileMenu.classList.toggle('inactive');
 }
@@ -44,7 +55,9 @@ function toggleburgerMenu() {
 function togglecarritoMenu() {
     let isMobileMenuClosed = mobileMenu.classList.contains('inactive');
 
-    let isDesktopMenuClosed = menuEmail.classList.contains('inactive')
+    let isDesktopMenuClosed = menuEmail.classList.contains('inactive');
+
+    let isProductDetailClosed = productDetail.classList.contains('inactive');
 
     console.log('click');
     
@@ -56,6 +69,10 @@ if(!isMobileMenuClosed){
 if(!isDesktopMenuClosed){
 
     desktopMenu.classList.add('inactive')
+}
+if(!isProductDetailClosed){
+
+    productDetail.classList.add('inactive')
 }
     carritoMenu.classList.toggle('inactive')
 }
@@ -144,7 +161,30 @@ function renderProducts(arr){
     
         const productImg = document.createElement('img')
         productImg.setAttribute('src', product.image);
-    
+
+        
+        productImg.addEventListener('click', openProductsDetail);
+        
+        function openProductsDetail() {
+            console.log('click');
+
+            let isMobileMenuClosed = mobileMenu.classList.contains('inactive');
+            let isDesktopMenuClosed = menuEmail.classList.contains('inactive');
+            let isCarritoMenuClosed = carritoMenu.classList.contains('inactive');
+
+            if(!isMobileMenuClosed){
+                mobileMenu.classList.add ('inactive');
+            }
+            if(!isDesktopMenuClosed){
+                desktopMenu.classList.add('inactive')
+            }
+            if(!isCarritoMenuClosed){
+
+                carritoMenu.classList.add ('inactive');
+            }
+            productDetail.classList.remove('inactive');
+        }
+       
     
         const productInfo = document.createElement('div');
         productInfo.classList.add('product-info');
@@ -221,6 +261,10 @@ renderProducts(productList);
 */
 
 /*<aside class="product-detail-aside inactive">
+
+
+
+
     <div class="product-detail-close">
       <img src="./icons/icon_close.png" alt="close">
     </div>
@@ -230,34 +274,23 @@ renderProducts(productList);
       <p>Bike</p>
       <p>With its practical position, this bike also fulfills a decorative function, add your hall or workspace.</p>
       <button class="primary-button add-to-cart-button">
-        <img src="./icons/bt_add_to_cart.svg" alt="add to cart">
         Add to cart
       </button>
     </div>
   </aside>*/
 
-/*function toggleproductsCard() {
-    console.log('click');
+  let productDetailClose = document.querySelector('.product-detail-close');
+  
+  productDetailClose.addEventListener('click', closeProductsDetail);
+ 
+  
 
-    let isMobileMenuClosed = mobileMenu.classList.contains('inactive');
+function closeProductsDetail() {
 
-    let isDesktopMenuClosed = menuEmail.classList.contains('inactive');
-
-    
-    
-if(!isMobileMenuClosed){
-
-    mobileMenu.classList.add ('inactive');
+    productDetail.classList.add('inactive');
 
 }
-if(!isDesktopMenuClosed){
 
-    desktopMenu.classList.add('inactive')
-}
-
-    productDetail.classList.toggle('inactive');
-}
-*/
 
 
 
